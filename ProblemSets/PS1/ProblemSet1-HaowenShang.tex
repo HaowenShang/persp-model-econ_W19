@@ -78,7 +78,7 @@
 
 \textbf{Part (a).} I find a statistic model from an article named \emph{``The Long-Term Effects of Management and Technology Transfers"} in the \emph{American Economic Review}.
 
-The statistic model examines the long-run causal effects of management and technology transfers on firm performance. Management and technology transfers from US firms to Italian firms through  \emph{the United States Technical Assistance and Productivity Program (1952–1958)}.  For each firm participate in the Productivity program, managers and engineers were sent to US firms to study management and technology and thus Management and technology transfers from US firms to Italian firms. The author collected and digitized balance sheets from five years before to fifteen years after the Productivity Program and linked them to firms’ application records. Using these data, the author compared the performance of firms that applied for and eventually received the management or the technology transfer (treated firms) with that of firms applying for the same transfer, but not receiving it due to the budget cut (comparison firms). Then she found that ``performance of Italian firms that sent their managers to the United States increased for at least fifteen years after the program; performance of companies that received new machines increased, but flattened out over time'' (Giorcelli, 2019, p.121).
+The statistic model examines the long-run causal effects of management and technology transfers on firm performance. Management and technology transfer from US firms to Italian firms through  \emph{the United States Technical Assistance and Productivity Program (1952–1958)}.  For each firm participate in the Productivity Program, managers and engineers were sent to US firms to study management and technology and thus management and technology transfer from US firms to Italian firms. The author collected and digitized balance sheets from five years before to fifteen years after the Productivity Program and linked them to firms’ application records. Using these data, the author compared the performance of firms that applied for and eventually received the management or the technology transfer (treated firms) with that of firms applying for the same transfer, but not receiving it due to the budget cut (comparison firms). Then she found that ``performance of Italian firms that sent their managers to the United States increased for at least fifteen years after the program; performance of companies that received new machines increased, but flattened out over time'' (Giorcelli, 2019, p.121).
 
 \textbf{Part (b).} The detailed citation of the article:
 
@@ -105,7 +105,7 @@ $\varepsilon_{it}$ is the error term.
 
 \textbf{Part (e).} This is a dynamic, linear and stochastic model, because the model is related to time, uses a linear approach and has a random error term.
 
-\textbf{Part (f).} I think the variable of \emph{the total numbers of managers and engineers to be sent in US firms} in the treatment group is valuable, because it may have influence on outcomes of firm performance. Firms perform better when they learned more and the number of people they sent is a factor influence how much they learned. The modified model is:
+\textbf{Part (f).} I think the variable of \emph{the total numbers of managers and engineers to be sent in US firms} in the treatment group is valuable, because it may have influence on outcomes of firm performance. Firms perform better when they learned more management and technology. And the number of people they sent is a factor influence how much they learned. The modified model is:
 \begin{equation*}
  outcome_{it} = \alpha_{i} + v_{t} + \sum_{\tau =-5}^{15} \delta_{\tau }\left [ Treat_{i} \cdot \left ( \textup{Years After Treat} = \tau  + TotalNumbers_{i} \right ) \right ] + \varepsilon_{it}
 \end{equation*}
@@ -118,14 +118,25 @@ Giorcelli, Michela. 2019.``The Long-Term Effects of Management and Technology Tr
 
 \noindent\textbf{Problem 2: Make your own model}
 
-\textbf{Part (a).}I'll use logistic regression to create a logit model of whether someone decides to get married (outcome is the log-odds).
+\textbf{Part (a).}I'll use logistic regression to create a logit model of whether someone decides to get married. 
 \begin{equation*}
-outcome^{*}=\beta _{0} + \beta _{1}\cdot Age + \beta _{2}\cdot Gender + \beta _{3}\cdot Ethnicity + \beta _{4}\cdot Religion +  \beta _{5}\cdot Income + \epsilon
+Outcome^{*}=\beta _{0} + \beta _{1}\cdot Age + \beta _{2}\cdot Gender + \beta _{3}\cdot Ethnicity + \beta _{4}\cdot Religion +  \beta _{5}\cdot Income + \epsilon
 \end{equation*}
 then,
 \begin{equation*}
 Y = \left\{\begin{matrix}
-1=\textup{get married,} \quad\textup{if } outcome^{*}> 0 \\ 0=\textup{not get married,}\qquad\textup{otherwise} 
+1=\textup{get married,} \quad\textup{if } Outcome^{*}> 0 \\ 0=\textup{not get married,}\qquad\textup{otherwise} 
+\end{matrix}\right.
+\end{equation*}
+
+Or
+\begin{equation*}
+p\left ( \textup{get married} \right )=\frac{e^{\beta _{0} + \beta _{1}\cdot Age + \beta _{2}\cdot Gender + \beta _{3}\cdot Ethnicity + \beta _{4}\cdot Religion +  \beta _{5}\cdot Income + \epsilon}}{1+e^{\beta _{0} + \beta _{1}\cdot Age + \beta _{2}\cdot Gender + \beta _{3}\cdot Ethnicity + \beta _{4}\cdot Religion +  \beta _{5}\cdot Income + \epsilon}}
+\end{equation*}
+then,
+\begin{equation*}
+Y = \left\{\begin{matrix}
+1=\textup{get married,} \ \textup{if p(get married)} < 0.5 \\ 0=\textup{not get married,}\ \qquad \textup{ otherwise}
 \end{matrix}\right.
 \end{equation*}
 
@@ -143,7 +154,7 @@ Y = \left\{\begin{matrix}
 
 \textbf{Part (c).}The model is a complete data generating process. I can simulate data from the model given all the parameters and relationships. Firstly, I can use some sample data to estimate parameters $\beta$. Then after knowing all the parameters and relationships, I can use this model to estimate whether people decide to get married when we have data of their age, gender, ethnicity, religion and income.
 
-\textbf{Part (d).} The key factors that influence this model are \emph{Age} and \emph{Income}, because when people get older and have much more income, they are much more willing to get married. For example, whatever other variables are, people at 18 years old are possibly not married. And whatever other variables are, people are possibly not married when they can't afford the rent of the house. \emph{Gender} may influence marriage decision, but it's not a key factor. \emph{Ethnicity} and \emph{Religion} capture the similarity between the dating couples, but some couples get married because they are similar with each other and some couples get married because they are different and thus they can complement each other.
+\textbf{Part (d).} The key factors that influence this model are \emph{Age} and \emph{Income}, because people decide to get married when they are at certain age and have a relative high income to afford the expense of marriage. For example, it's a relatively low possibility that people get married under 20 years old. And it's also a relatively low possibility that people get married when they can't afford the rent of the house. \emph{Gender} may influence marriage decision, but it's not a key factor. \emph{Ethnicity} and \emph{Religion} capture the similarity between the dating couples, but some couples get married because they are similar with each other and some couples get married because they are different and thus they can complement each other.
 
 \textbf{Part (e).}Marriage decision is related to person's characteristics and similarities with dating partner. \emph{Age}, \emph{Gender}, \emph{Income} are most representative for person's characteristics. Other characteristics like \emph{Educational Level} and \emph{Experience}  may be linear with \emph{Age}, \emph{Gender} and \emph{Income}. People with higher income always have high educational level. And people always earn richer experience when they get older. \emph{Ethnicity} and \emph{Religion} are most representative for couple's similarity. The similarity in \emph{cultural background} may be linear with these two variables because people with same \emph{Ethnicity} and \emph{Religion} always have same \emph{cultural background}. 
 
