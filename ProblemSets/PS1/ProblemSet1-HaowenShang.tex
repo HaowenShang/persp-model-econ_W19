@@ -1,0 +1,160 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize\textsl{Page \thepage\ of \pageref{LastPage}}}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{listings}
+\lstset{frame=single,
+  language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{harvard}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+%\numberwithin{equation}{section}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\newcommand\boldline{\arrayrulewidth{1pt}\hline}
+
+
+\begin{document}
+
+\begin{flushleft}
+  \textbf{\large{Problem Set \#1}} \\
+  MACS 30000, Dr. Evans \\
+  Haowen Shang
+\end{flushleft}
+
+\vspace{5mm}
+
+\noindent\textbf{Problem 1: Classify a model from a journal}
+
+\textbf{Part (a).} I find a statistic model from an article named \emph{``The Long-Term Effects of Management and Technology Transfers"} in the \emph{American Economic Review}.
+
+The statistic model examines the long-run causal effects of management and technology transfers on firm performance. Management and technology transfers from US firms to Italian firms through  \emph{the United States Technical Assistance and Productivity Program (1952–1958)}.  For each firm participate in the Productivity program, managers and engineers were sent to US firms to study management and technology and thus Management and technology transfers from US firms to Italian firms. The author collected and digitized balance sheets from five years before to fifteen years after the Productivity Program and linked them to firms’ application records. Using these data, the author compared the performance of firms that applied for and eventually received the management or the technology transfer (treated firms) with that of firms applying for the same transfer, but not receiving it due to the budget cut (comparison firms). Then she found that ``performance of Italian firms that sent their managers to the United States increased for at least fifteen years after the program; performance of companies that received new machines increased, but flattened out over time'' (Giorcelli, 2019, p.121).
+
+\textbf{Part (b).} The detailed citation of the article:
+
+Giorcelli, Michela. 2019. ``The Long-Term Effects of Management and Technology Transfers." \emph{American Economic Review}, 109 (1): 121-152.
+
+\textbf{Part (c).} The statistic model is 
+\begin{equation*}
+ outcome_{it} = \alpha_{i} + v_{t} + \sum_{\tau =-5}^{15} \delta_{\tau }\left [ Treat_{i} \cdot \left ( \textup{Years After Treat} = \tau  \right ) \right ] + \varepsilon_{it}
+\end{equation*}
+
+$outcome_{it}$ is the performance of firm which is ``metrics of logged (deflated) sales, number of employees, and TFPR of firm i in year t" (Giorcelli, 2019, p.130); 
+
+$\alpha_{i} $ is the firm fixed effects which ``controls for variation in outcomes across firms constant over time"(Giorcelli, 2019, p.130); 
+
+$ v_{t}$ is the year fixed effects and ``controls for variation in outcomes over time that is common across all firms" (Giorcelli, 2019, p.130); 
+
+$Treat_{i}$ is ``an indicator that equals one if firm i is located in a treatment province, eventually selected to participate in the Productivity Program" (Giorcelli, 2019, p.130-131); 
+
+$\textup{Years After Treat} = \tau$ equals to ``the difference between the calendar year t and the year in which firm i participated in the Productivity Program"(Giorcelli, 2019, p.131); 
+
+$\varepsilon_{it}$ is the error term.
+
+\textbf{Part (d).} The exogenous variables in this model are $Treat_{i}$  and $ \textup{Years After Treat} = \tau $  ; The endogenous variable in this model is $outcome_{it}$, which is the the output of the model.
+
+\textbf{Part (e).} This is a dynamic, linear and stochastic model, because the model is related to time, uses a linear approach and has a random error term.
+
+\textbf{Part (f).} I think the variable of \emph{the total numbers of managers and engineers to be sent in US firms} in the treatment group is valuable, because it may have influence on outcomes of firm performance. Firms perform better when they learned more and the number of people they sent is a factor influence how much they learned. The modified model is:
+\begin{equation*}
+ outcome_{it} = \alpha_{i} + v_{t} + \sum_{\tau =-5}^{15} \delta_{\tau }\left [ Treat_{i} \cdot \left ( \textup{Years After Treat} = \tau  + TotalNumbers_{i} \right ) \right ] + \varepsilon_{it}
+\end{equation*}
+ 
+\textbf{Reference:}
+
+Giorcelli, Michela. 2019.``The Long-Term Effects of Management and Technology Transfers."  \emph{American Economic Review}, 109 (1): 121-152.
+
+\vspace{5mm}
+
+\noindent\textbf{Problem 2: Make your own model}
+
+\textbf{Part (a).}I'll use logistic regression to create a logit model of whether someone decides to get married (outcome is the log-odds).
+\begin{equation*}
+outcome^{*}=\beta _{0} + \beta _{1}\cdot Age + \beta _{2}\cdot Gender + \beta _{3}\cdot Ethnicity + \beta _{4}\cdot Religion +  \beta _{5}\cdot Income + \epsilon
+\end{equation*}
+then,
+\begin{equation*}
+Y = \left\{\begin{matrix}
+1=\textup{get married,} \quad\textup{if } outcome^{*}> 0 \\ 0=\textup{not get married,}\qquad\textup{otherwise} 
+\end{matrix}\right.
+\end{equation*}
+
+\emph{Age} is a continuous variable. 
+
+\emph{Gender} is a dummy variable. $1 = female$ and $0 = male$.  
+
+\emph{Ethnicity } is a dummy variable.  1 = \emph{same ethnicity with dating partner} and  0 = \emph{different ethnicity with dating partner }. 
+
+\emph{Religion} is a dummy variable.  1 = \emph{same religion and beliefs with dating partner} and 0 = \emph{different religion and beliefs with dating partner}. 
+
+\emph{Income} is a continuous variable.
+
+\textbf{Part (b).} The dependent endogenous variables in this model is Y, which represents whether people decide to get married(1 = get married and 0 = not get married).
+
+\textbf{Part (c).}The model is a complete data generating process. I can simulate data from the model given all the parameters and relationships. Firstly, I can use some sample data to estimate parameters $\beta$. Then after knowing all the parameters and relationships, I can use this model to estimate whether people decide to get married when we have data of their age, gender, ethnicity, religion and income.
+
+\textbf{Part (d).} The key factors that influence this model are \emph{Age} and \emph{Income}, because when people get older and have much more income, they are much more willing to get married. For example, whatever other variables are, people at 18 years old are possibly not married. And whatever other variables are, people are possibly not married when they can't afford the rent of the house. \emph{Gender} may influence marriage decision, but it's not a key factor. \emph{Ethnicity} and \emph{Religion} capture the similarity between the dating couples, but some couples get married because they are similar with each other and some couples get married because they are different and thus they can complement each other.
+
+\textbf{Part (e).}Marriage decision is related to person's characteristics and similarities with dating partner. \emph{Age}, \emph{Gender}, \emph{Income} are most representative for person's characteristics. Other characteristics like \emph{Educational Level} and \emph{Experience}  may be linear with \emph{Age}, \emph{Gender} and \emph{Income}. People with higher income always have high educational level. And people always earn richer experience when they get older. \emph{Ethnicity} and \emph{Religion} are most representative for couple's similarity. The similarity in \emph{cultural background} may be linear with these two variables because people with same \emph{Ethnicity} and \emph{Religion} always have same \emph{cultural background}. 
+
+\textbf{Part (f).}The measure  of preliminary test are as following:
+
+ 1.Do a survey with questionnaires. The questions include: ``Whether you decide to get married?", ``How old are you?", ``What's your gender, income, ethnicity and religion?", and ``What's your dating partner's ethnicity and religion".
+ 
+2. Use the data got from the survey and the method of Maximum Likelihood Estimation to estimate the parameters of the model.
+
+3. Find whether the factors in this model are significant in real life. 
+
+\end{document}
+
+
