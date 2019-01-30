@@ -1,0 +1,276 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize\textsl{Page \thepage\ of \pageref{LastPage}}}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{listings}
+\lstset{frame=single,
+  language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{harvard}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+%\numberwithin{equation}{section}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\newcommand\boldline{\arrayrulewidth{1pt}\hline}
+
+
+\begin{document}
+
+\begin{flushleft}
+  \textbf{\large{Problem Set \#3}} \\
+  MACS 30150, Dr. Evans \\
+  Haowen Shang
+\end{flushleft}
+
+\vspace{5mm}
+
+\noindent\textbf{Exercise 5.1}
+
+The condition that characterizes the optimal amount of cake to eat in period 1 is :
+
+\begin{equation*}
+  \max_{c_{1}\in \left [ 0,W_{1} \right ]}u\left ( c_{1} \right )\quad s.t. \quad W_{2} = W_{1} - c_{1}
+\end{equation*}
+
+The condition for the optimal amount of cake to save for the next period $W_{2}$ is:
+
+\begin{equation*}
+  \max_{W_{2}\in \left [ 0,W_{1} \right ]}u\left ( W_{1}-W_{2} \right )
+\end{equation*}
+
+In order to maximize utility, we know that If the individual lives for one period, the optimal decision is:  $c_{1} = W_{1}$ and $W_{2} = 0$.
+
+
+\noindent\textbf{Exercise 5.2}
+
+The condition for the optimal amount of cake to leave for the next period $W_{3}$ in period 2 is:
+
+\begin{equation*}
+  \max_{W_{3}\in \left [ 0,W_{2} \right ]}u\left ( W_{2}-W_{3} \right )
+\end{equation*}
+
+In order to maximize utility, we know that If the individual lives for two period, in period 2, the optimal decision is:  : $c_{2} = W_{2}$ and $W_{3} = 0$.
+
+The condition for the optimal amount of cake leave for the next period $W_{2}$ in period 1 is:
+
+\begin{equation*}
+  \max_{W_{2}\in \left [ 0,W_{1} \right ]} \left [  u\left ( W_{1}-W_{2} \right )+\beta\cdot \max_{W_{3}\in \left [ 0,W_{2} \right ]} u\left ( W_{2}-W_{3}\right )\right ]
+\end{equation*}
+
+
+Since we know $W_{3} = 0$, the formular above is:
+
+\begin{equation*}
+  \max_{W_{2}\in \left [ 0,W_{1} \right ]} \left [  u\left ( W_{1}-W_{2} \right )+\beta\cdot  u\left ( W_{2} \right )\right ]
+\end{equation*}
+
+Then we get the first order condition of period 1:
+
+\begin{equation*}
+   u'\left ( W_{1}-W_{2} \right )=\beta\cdot  u'\left ( W_{2} \right )
+\end{equation*}
+
+If the utility function and $W_{1}$ are known, we can know what $W_{2}$ is, which means $W_{2} = \psi_1 (W_{1})$.
+
+\noindent\textbf{Exercise 5.3}
+
+The condition for the optimal amount of cake to leave for the next period $W_{4}$ in period 3 is:
+
+\begin{equation*}
+  \max_{W_{4}\in \left [ 0,W_{3} \right ]}u\left ( W_{3}-W_{4} \right )
+\end{equation*}
+
+In order to maximize utility, we know that if the individual lives for three period, in period 3, $c_{3} = W_{3}$ and $W_{4} = 0$
+
+The condition for the optimal amount of cake leave for the next period $W_{3}$ in period 2 is:
+
+\begin{equation*}
+  \max_{W_{3}\in \left [ 0,W_{2} \right ]} \left [  u\left ( W_{2}-W_{3} \right )+\beta\cdot \max_{W_{4}\in \left [ 0,W_{3} \right ]} u\left ( W_{3}-W_{4} \right )\right ]
+\end{equation*}
+
+Since we know in last period, $W_{4} = 0$, the formular above is:
+
+\begin{equation*}
+  \max_{W_{3}\in \left [ 0,W_{2} \right ]} \left [  u\left ( W_{2}-W_{3} \right )+\beta\cdot  u\left ( W_{3} \right )\right ]
+\end{equation*}
+
+Then we get the first order condition of period 2:
+
+\begin{equation*}
+   u'\left ( W_{2}-W_{3} \right )=\beta\cdot  u'\left ( W_{3} \right )
+\end{equation*}
+
+Then we can get $W_{3} = \psi_2 (W_{2})$
+
+The condition for the optimal amount of cake leave for the next period $W_{2}$ in period 1 is:
+
+\begin{equation*}
+  \max_{W_{2}\in \left [ 0,W_{1} \right ]} \left [  u\left ( W_{1}-W_{2} \right )+\beta\cdot\max_{W_{3}\in \left [ 0,W_{2} \right ]} u\left ( W_{2}-W_{3} \right )+\beta ^{2}\cdot \max_{W_{4}\in \left [ 0,W_{3} \right ]}u\left ( W_{3}-W_{4} \right )\right ]
+\end{equation*}
+
+Since we know $W_{4} = 0$ and $W_{3} = \psi_2 (W_{2})$, the formular above is:
+
+\begin{equation*}
+  \max_{W_{2}\in \left [ 0,W_{1} \right ]} \left [  u\left ( W_{1}-W_{2} \right )+\beta\cdot u\left ( W_{2}-\psi_2 (W_{2} ) \right )+\beta ^{2}\cdot u\left ( \psi_2 (W_{2})\right )\right ]
+\end{equation*}
+
+Then we get the first order condition for period 1:
+
+\begin{equation*}
+\begin{aligned}
+   u'\left ( W_{1}-W_{2} \right ) = \beta\cdot u'\left ( W_{2}-\psi_2 (W_{2} ) \right )\cdot(1-\psi_{2}' (W_{2})) + \beta ^{2}\cdot u'(\psi_2 (W_{2}))\cdot \psi_{2} '(W_{2})\\= \beta\cdot u'\left ( W_{2}-W_{3}  \right )\cdot(1-\psi_{2}' (W_{2})) + \beta ^{2}\cdot u'(W_{3})\cdot \psi_{2} '(W_{2})\\=\beta\cdot u'\left ( W_{2}-W_{3}  \right ) +\beta\cdot \psi_{2}' (W_{2})\cdot [-u'( W_{2}-W_{3}) + \beta\cdot u'(W_{3})]\\=\beta\cdot u'\left ( W_{2}-W_{3}  \right ) 
+ \end{aligned}
+\end{equation*}
+
+If the initial cake size is $W_{1} = 1$, the discount factor is $\beta = 0.9$, and the period utility function is $ln(c_{t})$, we can solve the equations above and get $W_{1} = 1$, $W_{2} =0.631 $, $W_{3} = 0.299$, and $W_{4} = 0$. And $c_{1} = 0.369$, $c_{2} =0.332$, $c_{3} = 0.299$.
+
+The evolvement of $\left \{ c_{t} \right \}_{t=1}^{3}$ and $\left \{ W_{t} \right \}_{t=1}^{4}$ over the three periods shows in the JupyterNotebook.
+
+\noindent\textbf{Exercise 5.4}
+
+The condition that characterizes the optimal choice (the policy function) in period T-1 for $ W_T =\psi_{T-1} \left(W_{T-1}\right) $ is :
+
+\begin{equation*}
+  \max_{W_{T}\in \left [ 0,W_{T-1} \right ]}[u ( W_{T-1}-W_{T})+\beta \cdot u(W_T)]
+\end{equation*}
+
+Then we get the first order condition:
+
+\begin{equation*}
+u'(W_{T-1}-W_{T})=\beta\cdot  u'( W_{T} )
+\end{equation*}
+
+\begin{equation*}
+u'(W_{T-1}-\psi_{T-1} (W_{T-1}))=\beta\cdot  u'( \psi_{T-1} (W_{T-1}) )
+\end{equation*}
+
+The value function $V_{T-1}$ is:
+
+\begin{equation*}
+V_{T-1}(W_{T-1}) = u(W_{T-1}-\psi_{T-1} (W_{T-1})) + \beta\cdot  u( \psi_{T-1} (W_{T-1}) )
+\end{equation*}
+
+\noindent\textbf{Exercise 5.5}
+
+Since $u(c)=ln(c)$, 
+
+in period T, we know that $$V_T(\overline{W}) = u(\overline{W})= ln(\overline{W})$$
+And $$\psi_T (\overline{W}) = 0 $$
+
+In period T-1, from the equation in Exercise 5.4, we can get $$\psi_{T-1} (\overline{W}) = \frac{\beta }{1+\beta }\cdot \overline{W}$$
+
+And $$V_{T-1}(\overline{W}) = ln(\frac{1}{1+\beta }\overline{W})+\beta \cdot ln(\frac{\beta }{1+\beta }\overline{W})$$
+
+Thus they are not equal.
+
+\noindent\textbf{Exercise 5.6}
+In period T-2,
+
+\begin{equation*}
+  \max_{W_{T-1}\in \left [ 0,W_{T-2} \right ]} \left [  u\left ( W_{T-2}-W_{T-1} \right )+\beta\cdot u\left ( W_{T-1}-\frac{\beta }{1+\beta }\cdot W_{T-1} \right )+\beta ^{2}\cdot u(\frac{\beta }{1+\beta }\cdot W_{T-1}  )\right ]
+\end{equation*}
+
+
+Then using the envelope theorem(like the equation in Exercise 5.3), we can get the first order condition:
+
+\begin{equation*}
+u'(W_{T-2}-W_{T-1})=\beta\cdot u'(W_{T-1}-\frac{\beta }{1+\beta }\cdot W_{T-1}) = \beta\cdot u'(\frac{1 }{1+\beta }\cdot W_{T-1})
+\end{equation*}
+
+Since $u(c)=ln(c)$, from the above equation we can get:
+
+\begin{equation*}
+  W_{T -1} = \psi_{T -2} (W_{T -2}) = \frac{\beta +\beta ^2}{1+\beta +\beta ^2}\cdot W_{T -2}
+\end{equation*}
+
+and
+
+\begin{equation*}
+V_{T-2}=ln( \frac{1}{1+\beta +\beta ^2}\cdot W_{T-2}) + \beta \cdot ln(\frac{\beta }{1+\beta +\beta ^2}\cdot W_{T -2})+ \beta^2 \cdot ln( \frac{\beta ^2}{1+\beta +\beta ^2}\cdot W_{T -2})
+\end{equation*}
+
+\noindent\textbf{Exercise 5.7}
+For the general integer $s \geq 1$ using induction, we can get:
+
+\begin{equation*}
+\psi_{T-s}(W_{T-s})=\frac{\sum\limits_{i=1}^{s}\beta^{i}}{\sum\limits_{j=0}^{s}\beta^{j}}W_{T-s}
+\end{equation*}
+
+\begin{equation*}
+V_{T-s}(W_{T-s}) = \sum\limits_{i=0}^{s} \beta^{i}ln\left(\frac{\beta^{i}\cdot W_{T-s}}{\sum\limits_{j=0}^{s}\beta^{j}}\right)
+\end{equation*}
+
+As s becomes infinite, 
+
+\begin{equation*}
+\psi_{T-s}(W_{T-s})= \psi(W_{T-s})=\frac{\frac{\beta }{1-\beta }}{\frac{1}{1-\beta }}\cdot W_{T-s}=\beta\cdot W_{T-s}
+\end{equation*}
+
+\begin{equation*}
+\begin{aligned}
+V_{T-s}(W_{T-s}) = V(W_{T-s}) =\sum\limits_{i=0}^{s} \beta^{i}ln(\beta^{i})+  \sum\limits_{i=0}^{s} \beta^{i}ln(\frac{1}{\sum\limits_{j=0}^{s}\beta^{j}})+\sum\limits_{i=0}^{s} \beta^{i} ln(W_{T-s}) \\
+=\frac{\beta }{(1-\beta)^2}ln(\beta) +\frac{1 }{1-\beta}ln(1-\beta )+\frac{1 }{1-\beta}ln(W_{T-s})
+\end{aligned}
+\end{equation*}
+
+
+
+As the horizon becomes further and further away (infinite), the value function and policy function become independent of time.
+
+
+\noindent\textbf{Exercise 5.8}
+
+$$V(W)\equiv \max_{W'\in [ 0,W]}u(W-W')+\beta V(W') $$
+$W'$ is cake to leave for the next period.
+\end{document}
+
